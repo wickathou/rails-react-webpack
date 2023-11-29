@@ -11,6 +11,6 @@ class StaticController < ApplicationController
 
   def random_greeting
     number = rand(Greeting.count)
-    return Greeting.all[number]
+    Greeting.all[number]
   end
 end
