@@ -1,18 +1,20 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setGreeting, fetchGreeting } from '../store/greetingSlice'
+import Greeting from './Greeting'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Greeting/>,
+  },
+]);
 
 const App = () => {
-  const dispatch = useDispatch()
-  const greetingText = useSelector((state) => state.greeting.greeting)
   return (
-    <>
-      <h1>
-        {greetingText}
-      </h1>
-      <button onClick={() => dispatch(setGreeting())}>Click here to reset</button>
-      <button onClick={() => dispatch(fetchGreeting())}>Fetch a new random greeting</button>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
